@@ -28,6 +28,15 @@ const App = () => {
 }
 
 const Statistics = ({good, neutral, bad}) => {
+  if (good + neutral + bad === 0){
+    return (
+      <div>
+        tilastot näytetään tässä
+      </div>
+    )
+  }
+
+  
   return (
     <div>
       <Display text="hyvä" value={good}/>
