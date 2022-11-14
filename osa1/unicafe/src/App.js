@@ -39,18 +39,18 @@ const Statistics = ({good, neutral, bad}) => {
   
   return (
     <div>
-      <Display text="hyvä" value={good}/>
-      <Display text="neutraali" value={neutral}/>
-      <Display text="huono" value={bad}/>
-      <Display text="yht" value={good + neutral + bad}/>
-      <Display text="ka" value={(good-bad) / (good + neutral + bad)}/>
-      <Display text="positiivisia" value={good / (good + neutral + bad) * 100} text2="%"/>
+      <StatisticsLine text="hyvä" value={good}/>
+      <StatisticsLine text="neutraali" value={neutral}/>
+      <StatisticsLine text="huono" value={bad}/>
+      <StatisticsLine text="yht" value={good + neutral + bad}/>
+      <StatisticsLine text="ka" value={(good-bad) / (good + neutral + bad)}/>
+      <StatisticsLine text="positiivisia" value={good / (good + neutral + bad) * 100} text2="%"/>
     </div>
   )
 }
 
 
-const Display = ({text, value, text2}) => {
+const StatisticsLine = ({text, value, text2}) => {
   return (
     <div>
       <p>{text} {value} {text2}</p>
