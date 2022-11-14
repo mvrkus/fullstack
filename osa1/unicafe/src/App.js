@@ -38,14 +38,35 @@ const Statistics = ({good, neutral, bad}) => {
 
   
   return (
-    <div>
-      <StatisticsLine text="hyvä" value={good}/>
-      <StatisticsLine text="neutraali" value={neutral}/>
-      <StatisticsLine text="huono" value={bad}/>
-      <StatisticsLine text="yht" value={good + neutral + bad}/>
-      <StatisticsLine text="ka" value={(good-bad) / (good + neutral + bad)}/>
-      <StatisticsLine text="positiivisia" value={good / (good + neutral + bad) * 100} text2="%"/>
-    </div>
+    <table>
+      <tbody>
+        <tr>
+          <td><StatisticsLine text="hyvä"/></td>
+          <td><StatisticsLine value={good}/></td>
+        </tr>
+        <tr>
+          <td><StatisticsLine text="neutraali"/></td>
+          <td><StatisticsLine value={neutral}/></td>
+        </tr>
+        <tr>
+          <td><StatisticsLine text="huono"/></td>
+          <td><StatisticsLine value={bad}/></td>
+        </tr>
+        <tr>
+          <td><StatisticsLine text="yhteensä"/></td>
+          <td><StatisticsLine value={good + neutral + bad}/></td>
+        </tr>
+        <tr>
+          <td><StatisticsLine text="keskiarvo"/></td>
+          <td><StatisticsLine value={(good-bad) / (good + neutral + bad)}/></td>
+        </tr>
+        <tr>
+          <td><StatisticsLine text="positiivisia"/></td>
+          <td><StatisticsLine value={good / (good + neutral + bad) * 100} text2="%"/></td>
+        </tr>
+      </tbody>
+    </table>
+    
   )
 }
 
@@ -53,7 +74,7 @@ const Statistics = ({good, neutral, bad}) => {
 const StatisticsLine = ({text, value, text2}) => {
   return (
     <div>
-      <p>{text} {value} {text2}</p>
+      {text} {value} {text2}
     </div>
   )
 }
