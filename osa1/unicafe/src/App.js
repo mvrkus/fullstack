@@ -25,14 +25,17 @@ const App = () => {
       <Display text="hyvä" value={good}/>
       <Display text="neutraali" value={neutral}/>
       <Display text="huono" value={bad}/>
+      <Display text="yht" value={good + neutral + bad}/>
+      <Display text="ka" value={(good-bad) / (good + neutral + bad)}/>
+      <Display text="positiivisia" value={good / (good + neutral + bad) * 100} text2="%"/>
     </div>
   )
 }
 
-const Display = ({text, value}) => {
+const Display = ({text, value, text2}) => {
   return (
     <div>
-      <p>{text} {value}</p>
+      <p>{text} {value} {text2}</p>
     </div>
   )
 }
