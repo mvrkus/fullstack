@@ -22,6 +22,14 @@ const App = () => {
         <Button handleClick={() => setHuono()} text="huono" />
       </div>
       <Header header={stats}/>
+      <Statistics good={good} neutral={neutral} bad={bad}/>
+    </div>
+  )
+}
+
+const Statistics = ({good, neutral, bad}) => {
+  return (
+    <div>
       <Display text="hyvä" value={good}/>
       <Display text="neutraali" value={neutral}/>
       <Display text="huono" value={bad}/>
@@ -31,6 +39,7 @@ const App = () => {
     </div>
   )
 }
+
 
 const Display = ({text, value, text2}) => {
   return (
