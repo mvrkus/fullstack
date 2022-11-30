@@ -29,12 +29,36 @@ const App = () => {
   return (
     
     <div>
-      <h2>{anecdotes[selected]}</h2>
+      <h2>Päivän anekdootti</h2>
+      <p>{anecdotes[selected]}</p>
       <div>
+        <Display aania={votes[selected]} text="Tällä anekdootilla on ääniä" />
         <Button onClick = {handleSeuraava} text="Next anecdote" />
         <Button onClick = {handleAanestys} text="Vote"/>
       </div>
-      <Display aania={votes[selected]} text="Tällä anekdootilla on" text2="ääntä" />
+      <Statistics selected={selected} anecdotes={anecdotes} votes={votes} text="Anekdootti jolla eniten ääniä:" text2="anekdootilla ääniä: "/>
+    </div>
+  )
+}
+
+const Statistics = ({anecdotes, votes, text, text2}) => {
+  let suurinAanimaara = Math.max(...votes)
+  
+  if (suurinAanimaara === 0){
+    return (
+      <div>
+        <p>"Ei vielä yhtään ääniä"</p>
+      </div>
+    )
+  }
+
+  console.log(suurinAanimaara)
+  const voittaja = anecdotes[votes.indexOf(suurinAanimaara)]
+
+  return (
+    <div>
+      <p>{text} {voittaja}</p>
+      <p>{text2} {suurinAanimaara}</p>
     </div>
   )
 }
