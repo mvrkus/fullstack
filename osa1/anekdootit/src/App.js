@@ -41,6 +41,7 @@ const App = () => {
   )
 }
 
+
 const Statistics = ({anecdotes, votes, text, text2}) => {
   let suurinAanimaara = Math.max(...votes)
   
