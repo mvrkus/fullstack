@@ -52,9 +52,15 @@ const Content = ({ parts }) => {
         {parts.map(part =>
            <Part key={part.id} part={part} /> 
         )}
-        
+        <Total parts={parts} />
       </ul>
     </div>
+  )
+}
+
+const Total = ({ parts }) => {
+  return (
+    <li>Total number of exercises: {parts.reduce((sum, part) => sum + part.exercises, 0)}</li>
   )
 }
 
