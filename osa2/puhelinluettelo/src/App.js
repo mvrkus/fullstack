@@ -4,22 +4,32 @@ import { useState } from 'react'
 
 const App = () => {
   const [persons, setPersons] = useState([
-    { name: 'Arto Hellas', 
-      id: 1 }
+    { name: 'Arto Hellas'
+    }
   ]) 
   const [newName, setNewName] = useState('')
+  
 
   const addName = (event) => {
     event.preventDefault()
-    const personObject = {
-      name: newName,
-      id: persons.length + 1
-
+    
+    if(persons.some(checkName) === false){
+      
+      const personObject = {
+        name: newName
+        }
+      setPersons(persons.concat(personObject))
+      setNewName('')
+      return
     }
-    setPersons(persons.concat(personObject))
-    setNewName('')
-    console.log({persons});
+
+    else {
+      alert(`Sinulla on jo ystävä nimeltä ${newName}. Älä tutustu uuteen.`)
+      return
+    }
   }
+
+  const checkName = (person) => newName === person.name;
 
   const handleNewName = (event) => {
     
@@ -27,8 +37,6 @@ const App = () => {
     
   }
 
-  console.log({persons});
-  
   return (
     <div>
       <h2>Phonebook</h2>
@@ -43,7 +51,7 @@ const App = () => {
       <h2>Numbers</h2>
       <ul>
         {persons.map(person => 
-          <Person key={person.id} person={person} />
+          <Person key={person.name} person={person} />
         )}
       </ul>
     </div>
